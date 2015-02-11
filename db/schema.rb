@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150210123012) do
+ActiveRecord::Schema.define(version: 20150211073407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "milestones", force: :cascade do |t|
+    t.integer  "referals_count"
+    t.string   "description"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "milestones_users", id: false, force: :cascade do |t|
+    t.integer "milestone_id"
+    t.integer "user_id"
+    t.boolean "awarded"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
