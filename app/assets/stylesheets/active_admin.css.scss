@@ -1,0 +1,8 @@
+@import "active_admin/mixins";
+@import "active_admin/base";
+
+.has_many_container.milestone_users {
+  label {
+    padding-left: 0 !important;
+  }
+}
