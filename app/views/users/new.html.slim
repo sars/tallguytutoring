@@ -1,14 +1,5 @@
 h1 be the first to know
-= form_for(@user) do |f|
-  - if @user.errors.any?
-    #error_explanation
-      h2
-        = pluralize(@user.errors.count, "error")
-          | prohibited this user from being saved:
-      ul
-        - @user.errors.full_messages.each do |message|
-          li
-            = message
-  .field
-    = f.text_field :email
-    = f.submit
+= form_for @user do |form|
+  = form.text_field :email
+  = form.hidden_field :ref, :value => params[:ref] if params[:ref]
+  = form.submit 'ololo'

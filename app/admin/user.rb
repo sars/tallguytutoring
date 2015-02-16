@@ -8,6 +8,7 @@ ActiveAdmin.register User do
     column :email
     column :ip_address
     column :token
+    column :confirmed_at
     actions
   end
 
