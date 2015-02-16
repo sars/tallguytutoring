@@ -41,20 +41,24 @@ ActiveRecord::Schema.define(version: 20150211144207) do
   end
 
   create_table "milestones", force: :cascade do |t|
-    t.integer  "referals_count"
-    t.string   "description"
+    t.integer  "referals_count", null: false
+    t.string   "description",    null: false
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email"
-    t.string   "ip_address"
-    t.string   "token"
+    t.string   "email",        null: false
+    t.string   "ip_address",   null: false
+    t.string   "token",        null: false
     t.datetime "confirmed_at"
     t.integer  "inviter_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
+
+  add_index "users", ["email"], name: "index_users_on_email", using: :btree
+  add_index "users", ["ip_address"], name: "index_users_on_ip_address", using: :btree
+  add_index "users", ["token"], name: "index_users_on_token", using: :btree
 
 end
