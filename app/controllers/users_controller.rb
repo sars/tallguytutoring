@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show]
-  before_action :user_by_token, only: [:confirm]
+  before_action :set_user_by_token, only: [:confirm]
 
   def show
   end
@@ -10,10 +10,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    if @user = User.find_by_email(user_params[:email])
-      redirect_to @user
-      return
-    end
+    @user = User.find_by_email(user_params[:email])
+    return redirect_to @user if @user
 
     respond_to do |format|
       @user = User.new(user_params)
@@ -22,10 +20,11 @@ class UsersController < ApplicationController
       @user.inviter = User.find_by_token(user_params[:ref])
 
       if @user.save
-        format.html {
-          redirect_to @user,
-          notice: 'User was successfully created'
-        }
+        if @user.inviter
+          next_milestone = Milestone.find_by_referals_count(@user.inviter.referals.size)
+          @user.inviter.milestones << next_milestone if next_milestone
+        end
+        format.html { redirect_to @user }
       else
         format.html { render :new }
       end
@@ -34,14 +33,7 @@ class UsersController < ApplicationController
 
   def confirm
     if !@user.confirmed_at && @user.confirmed_at = DateTime.now
-      respond_to do |format|
-        if @user.save
-          format.html {
-            redirect_to @user,
-            notice: 'User was successfully confirmed'
-          }
-        end
-      end
+      respond_to { |format| format.html { redirect_to @user } if @user.save }
     end
   end
 
@@ -51,7 +43,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:email, :token, :ref, :ip_address)
   end
 
-  def user_by_token
+  def set_user_by_token
     @user = User.find_by_token(params[:token])
   end
 
