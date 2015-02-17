@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show]
   before_action :set_user_by_token, only: [:confirm]
+  before_action :user_access, only: [:show]
 
   def show
   end
@@ -38,6 +39,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def user_access
+    return redirect_to action: :new unless @user.confirmed_at
+  end
 
   def user_params
     params.require(:user).permit(:email, :token, :ref, :ip_address)

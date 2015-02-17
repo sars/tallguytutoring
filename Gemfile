@@ -25,6 +25,10 @@ gem 'slim'
 gem 'activeadmin', github: 'activeadmin'
 # Use devise
 gem 'devise'
+# Use service SendGrid
+gem 'sendgrid'
+#Use service SendMail
+gem 'gibbon'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -40,4 +44,6 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   # Quiet Assets turns off the Rails asset pipeline log
   gem 'quiet_assets'
+  # Preview email in the browser instead of sending it
+  gem 'letter_opener'
 end

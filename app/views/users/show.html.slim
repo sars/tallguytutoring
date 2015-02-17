@@ -1,4 +1,3 @@
 h1 Invite friends & earn product
 form_tag
-  .field
-    = text_field_tag :rev, "http://#{ ENV['HOST'] }?ref=#{ @user.token }"
+  = text_field_tag :rev, root_url(ref: @user.token)

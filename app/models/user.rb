@@ -9,4 +9,16 @@ class User < ActiveRecord::Base
   validates :email, format: { with: /\A([a-z0-9_\.-])+@[a-z0-9-]+\.([a-z]{2,4}\.)?[a-z]{2,4}\z/i }, uniqueness: true
   # validates :ip_address, uniqueness: true
   validates :token, uniqueness: true
+
+  after_save :send_confirm_email, :send_email_to_mailchimp_list
+
+  private
+
+  def send_confirm_email
+    UserConfirm.confirm_email(token, email).deliver_now unless confirmed_at
+  end
+
+  def send_email_to_mailchimp_list
+    Gibbon::API.new(ENV['MAILCHIMP_API_KEY']).lists.subscribe({id: ENV['MAILCHIMP_LIST_ID'], email: {email: email}, double_optin: false}) rescue nil
+  end
 end
