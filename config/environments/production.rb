@@ -1,20 +1,16 @@
 Rails.application.configure do
 
-=begin
   config.action_mailer.smtp_settings = {
-      address: ENV['SMTP_ADDRESS'],
-      port: ENV['SMTP_PORT'],
-      domain: ENV['SMTP_DOMAIN'],
+      address: 'smtp.sendgrid.net',
+      port: 25,
+      domain: 'tallguytutoring.com',
       authentication: :plain,
       enable_starttls_auto: true,
       user_name: ENV['SMTP_USER_NAME'],
       password: ENV['SMTP_PASSWORD']
   }
-=end
 
   # Settings specified here will take precedence over those in config/application.rb.
-
-  config.action_mailer.delivery_method = :letter_opener
 
   # Code is not reloaded between requests.
   config.cache_classes = true

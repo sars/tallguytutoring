@@ -12,9 +12,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.find_by_email(user_params[:email])
-    return redirect_to @user if @user
 
     respond_to do |format|
+      return redirect_to @user if @user
       @user = User.new(user_params)
       @user.ip_address = request.remote_ip
       @user.token = Devise.friendly_token
