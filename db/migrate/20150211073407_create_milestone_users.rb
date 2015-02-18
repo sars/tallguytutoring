@@ -5,5 +5,6 @@ class CreateMilestoneUsers < ActiveRecord::Migration
       t.integer :user_id
       t.boolean :awarded, default: false
     end
+    add_index :milestone_users, [:milestone_id, :user_id], unique: true
   end
 end

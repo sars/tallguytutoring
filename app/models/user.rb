@@ -10,7 +10,15 @@ class User < ActiveRecord::Base
   # validates :ip_address, uniqueness: true
   validates :token, uniqueness: true
 
-  after_save :send_confirm_email, :send_email_to_mailchimp_list
+  after_commit :send_confirm_email, on: :create
+  after_commit :next_milestone, on: [:create, :update]
+  after_commit :send_email_to_mailchimp_list, on: :update
+
+  scope :confirmed_referals, -> { where('confirmed_at IS NOT NULL') }
+
+  def referals_cout
+    referals.confirmed_referals.size
+  end
 
   private
 
@@ -19,6 +27,15 @@ class User < ActiveRecord::Base
   end
 
   def send_email_to_mailchimp_list
-    Gibbon::API.new(ENV['MAILCHIMP_API_KEY']).lists.subscribe({id: ENV['MAILCHIMP_LIST_ID'], email: {email: email}, double_optin: false}) rescue nil
+    gibbon = Gibbon::API.new(ENV['MAILCHIMP_API_KEY'])
+    params = {id: ENV['MAILCHIMP_LIST_ID'], email: {email: email}, double_optin: false}
+    gibbon.lists.subscribe(params) if confirmed_at rescue nil
+  end
+
+  def next_milestone
+    if inviter and confirmed_at
+      next_milestone = Milestone.find_by_referals_count(inviter.referals_cout)
+      inviter.milestones << next_milestone if next_milestone
+    end
   end
 end
