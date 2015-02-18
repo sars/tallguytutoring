@@ -1,7 +1,7 @@
 ActiveAdmin.register User do
   permit_params :email, :ip_address, :token, :referals_cout, milestone_users_attributes: [:id, :awarded]
   remove_filter :milestone_users
-  filter :milestone_users_awarded, as: :check_boxes, label: 'Awarded users'
+  filter :milestone_users_awarded_in, as: :radio, label: 'Awarded users', collection: [['YES', true], ['NO', false]]
   filter :milestones, as: :select, collection: proc { Milestone.all.map{ |a| [a.description, a.id]} }
 
   index do

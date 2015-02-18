@@ -1,3 +1,48 @@
-h1 Invite friends & earn product
-form_tag
-  = text_field_tag :rev, root_url(ref: @user.token)
+#refer
+  .header
+    .content
+      p.logo.brandon
+        | Harry&#8217;s</p>
+      p.byline.brandon
+        | THANK YOU FOR SIGNING UP
+  .hero
+    .page-content.clearfix
+      .mammoth
+      .share-wrap
+        p.why.brandon
+          | Don't leave your friends behind
+        p.title.brandon
+          | INVITE FRIENDS &amp;
+          br
+          |Earn Product
+        p.subtitle.brandon
+          | Share your unique link via email, Facebook
+          br
+          | or Twitter and earn Harry's goods for<br>each friend who signs up.
+        .copy-link.brandon
+          = root_url(ref: @user.token)
+        .social-links
+          .fb-share-button data-href="https://developers.facebook.com/docs/plugins/" data-layout="button"
+          a href="http://www.facebook.com/sharer/sharer.php?u=#{CGI::escape(root_url(ref: @user.token))}" class="fb" target="_blank"
+          .sep
+          a href="http://twitter.com/share?url=#{CGI::escape(root_url(ref: @user.token))}" class="twit" target="_blank"
+  .prizes class="prize-#{@user.milestones.size}"
+    .page-content
+      p.callout.brandon
+        |Here's How It Works:
+      ul.products.clearfix
+        li.title.brandon
+          p.friends
+            | Friends Joined
+          p.rewards
+            | Harry's Product
+        - @user.all_milestone.each do |info|
+          li.product.brandon class="#{'selected' if info[:last_reached]}"
+            .circle
+              = info[:milestone].referals_count
+            .sep
+            p
+              = info[:milestone].description
+      .progress
+        .mover
+          .bar.clearfix
