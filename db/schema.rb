@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 20150211144207) do
     t.boolean "awarded",      default: false
   end
 
+  add_index "milestone_users", ["milestone_id", "user_id"], name: "index_milestone_users_on_milestone_id_and_user_id", unique: true, using: :btree
+
   create_table "milestones", force: :cascade do |t|
     t.integer  "referals_count", null: false
     t.string   "description",    null: false
