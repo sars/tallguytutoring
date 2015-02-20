@@ -21,11 +21,12 @@
           | or Twitter and earn Harry's goods for<br>each friend who signs up.
         .copy-link.brandon
           = root_url(ref: @user.token)
+          - twitter_message = "Shaving is evolving. Excited for harrys to launch"
         .social-links
           .fb-share-button data-href="https://developers.facebook.com/docs/plugins/" data-layout="button"
           a href="http://www.facebook.com/sharer/sharer.php?u=#{CGI::escape(root_url(ref: @user.token))}" class="fb" target="_blank"
           .sep
-          a href="http://twitter.com/share?url=#{CGI::escape(root_url(ref: @user.token))}" class="twit" target="_blank"
+          a href="http://twitter.com/share?url=#{CGI::escape(root_url(ref: @user.token))}&text=#{CGI::escape(twitter_message)}" class="twit" target="_blank"
   .prizes class="prize-#{@user.milestones.size}"
     .page-content
       p.callout.brandon
