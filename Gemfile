@@ -21,6 +21,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 # Use slim templating language
 gem 'slim'
+# Use haml templating language
+gem 'haml'
 # Use Active Admin
 gem 'activeadmin', github: 'activeadmin'
 # Use devise
@@ -29,6 +31,8 @@ gem 'devise'
 gem 'sendgrid'
 #Use service SendMail
 gem 'gibbon'
+# Shows cute notifications in frontend
+gem 'frontend_notifier'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

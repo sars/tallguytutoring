@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :milestones, through: :milestone_users
+  has_many :milestones, -> { order :referals_count}, through: :milestone_users
   has_many :milestone_users, dependent: :delete_all
   has_many :referals, class_name: User, foreign_key: :inviter_id
   belongs_to :inviter, class_name: User
@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   attr_accessor :ref
 
   validates :email, format: { with: /\A([a-z0-9_\.-])+@[a-z0-9-]+\.([a-z]{2,4}\.)?[a-z]{2,4}\z/i }, uniqueness: true
-  # validates :ip_address, uniqueness: true
+  validates :ip_address, uniqueness: true
   validates :token, uniqueness: true
 
   after_commit :send_confirm_email, on: :create
@@ -18,6 +18,15 @@ class User < ActiveRecord::Base
 
   def referals_cout
     referals.confirmed_referals.size
+  end
+
+  def all_milestone
+    milestone_last = milestones.last
+    Milestone.all.order(:referals_count).map do |milestone|
+      hash = { milestone: milestone, last_reached: false }
+      hash.merge!({last_reached: true}) if milestone_last and milestone.id.equal? milestone_last.id
+      hash
+    end
   end
 
   private
