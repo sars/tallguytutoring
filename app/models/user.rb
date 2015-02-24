@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   attr_accessor :ref
 
   validates :email, format: { with: /\A([a-z0-9_\.-])+@[a-z0-9-]+\.([a-z]{2,4}\.)?[a-z]{2,4}\z/i }, uniqueness: true
-  validates :ip_address, uniqueness: true
+  validate :ip_access, on: :create
   validates :token, uniqueness: true
 
   after_commit :send_confirm_email, on: :create
@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
   after_commit :send_email_to_mailchimp_list, on: :update
 
   scope :confirmed_referals, -> { where('confirmed_at IS NOT NULL') }
+
+  def ip_access
+    errors.add :ip_address, :invalid unless User.where(ip_address: ip_address).size <= 2
+  end
 
   def referals_cout
     referals.confirmed_referals.size
@@ -32,7 +36,7 @@ class User < ActiveRecord::Base
   private
 
   def send_confirm_email
-    UserConfirm.confirm_email(token, email).deliver_now unless confirmed_at
+    UserConfirm.confirm_email(token, email).deliver unless confirmed_at
   end
 
   def send_email_to_mailchimp_list

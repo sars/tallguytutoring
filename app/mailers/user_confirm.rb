@@ -1,9 +1,7 @@
 class UserConfirm < ApplicationMailer
-  include SendGrid
 
   def confirm_email(token, email)
-    @token = token
-    sendgrid_category :welcome
-    mail to: email, subject: 'Welcome!'
+    confirm_link = Rails.application.routes.url_helpers.confirm_url(token: token)
+    mandrill_mail template: 'confirm_email', to: email,  vars: { CONFIRM_LINK: confirm_link }
   end
 end

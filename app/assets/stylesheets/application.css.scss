@@ -1,3 +1,4 @@
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -15,6 +16,9 @@
 
 form{
   margin-bottom: 0;
+  height: 35px;
+  width: 100%;
+  border: 1px solid #074E6F;
 }
 
 .clearfix:before,
@@ -44,14 +48,13 @@ form{
 }
 
 #home .hero{
-  width: 100%;
-  height: 446px;
-  background: asset-url('home/hero.jpg') center center no-repeat;
-  background-size: 1600px 446px;
+  width: 1386px;
+  height: 612px;
+  background: url("/assets/home/hero-7467ba8f543c7eb03cafea1a574edc7c.jpg") no-repeat scroll center center / 1386px 611px transparent;
   overflow: hidden;
   position: relative;
-  letter-spacing: .09em;
-  margin: 0 auto;
+  letter-spacing: 0.09em;
+  margin: 0px auto;
 }
 
 #home .hero .large{
@@ -59,7 +62,7 @@ form{
   font-size: 40px;
   color: #074E6F;
   text-transform: uppercase;
-  margin: 220px 0px 0px 27%;
+  margin: 335px 0px 0px 20%;
   position: relative;
   z-index: 2;
   letter-spacing: 2px;
@@ -69,7 +72,7 @@ form{
   font-weight: bold;
   color: #955F5D;
   font-size: 18px;
-  margin: 10px 0 0 25%;
+  margin: 10px 0 0 20%;
   line-height: 30px;
   position: relative;
   z-index: 2;
@@ -106,15 +109,15 @@ form{
 #home .form-wrap .email{
   float: left;
   font-size: 13px;
-  padding: 8px 0 8px 10px;
-  border: 1px solid #074E6F;
+  padding: 9px 0 9px 10px;
+  border: 0;
   width: 256px;
   outline: none;
   letter-spacing: 1px;
 }
 
 #home .form-wrap .submit{
-  width: 143px;
+  width: 145px;
   background: #074E6F;
   float: left;
   height: 35px;
@@ -252,6 +255,7 @@ form{
 
 #refer{
   background: #FFF;
+  text-align: center;
 }
 
 #refer .page-content{
@@ -304,6 +308,7 @@ form{
   // background: #F1F0EE;
   height: 391px;
   overflow: hidden;
+  height: 440px;
 }
 
 #refer .mammoth{
@@ -372,15 +377,25 @@ form{
   margin: 20px auto 0;
 }
 
+.copied-msg {
+  background-color: #309550;
+  color: #ffffff;
+  display: none;
+}
+
 #refer .share-wrap .social-links{
-  width: 120px;
+  width: 250px;
   height: 37px;
   margin: 25px auto 0;
   text-align: center;
 }
 
 #refer .share-wrap .social-links a, #refer .share-wrap .social-links div{
-  display: inline-block;
+  // display: inline-block;
+}
+
+.fb_iframe_widget {
+  float: left;
 }
 
 #refer .share-wrap .social-links .fb{
@@ -398,17 +413,18 @@ form{
 }
 
 #refer .share-wrap .social-links .sep{
-  height: 28px;
+  height: 20px;
   width: 1px;
   background: #BAB9BA;
   margin: 0 20px;
+  float: left;
 }
 
 #refer .prizes{
   width: 100%;
   background: #FFF;
   border-top: 1px solid #D2D1C8;
-  padding-bottom: 100px;
+  padding-bottom: 90px;
 }
 
 #refer .prizes .page-content{
