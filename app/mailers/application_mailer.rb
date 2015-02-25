@@ -1,4 +1,3 @@
-class ApplicationMailer < ActionMailer::Base
-  default from: "no-reply@tallguytutoring.com"
-  layout 'mailer'
+class ApplicationMailer < MandrillMailer::TemplateMailer
+  default from: 'no-reply@tallguytutoring.com'
 end

@@ -27,8 +27,8 @@ gem 'haml'
 gem 'activeadmin', github: 'activeadmin'
 # Use devise
 gem 'devise'
-# Use service SendGrid
-gem 'sendgrid'
+# Use service Mandrill
+gem 'mandrill_mailer'
 #Use service SendMail
 gem 'gibbon'
 # Shows cute notifications in frontend
@@ -48,6 +48,4 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   # Quiet Assets turns off the Rails asset pipeline log
   gem 'quiet_assets'
-  # Preview email in the browser instead of sending it
-  gem 'letter_opener'
 end

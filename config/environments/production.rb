@@ -1,14 +1,5 @@
 Rails.application.configure do
-
-  config.action_mailer.smtp_settings = {
-      address: 'smtp.sendgrid.net',
-      port: 25,
-      domain: 'tallguytutoring.com',
-      authentication: :plain,
-      enable_starttls_auto: true,
-      user_name: ENV['SMTP_USER_NAME'],
-      password: ENV['SMTP_PASSWORD']
-  }
+  config.mandrill_mailer.default_url_options = { host: ENV['HOST'] }
 
   # Settings specified here will take precedence over those in config/application.rb.
 

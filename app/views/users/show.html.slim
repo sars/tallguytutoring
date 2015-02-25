@@ -1,10 +1,4 @@
 #refer
-  .header
-    .content
-      p.logo.brandon
-        | Harry&#8217;s</p>
-      p.byline.brandon
-        | THANK YOU FOR SIGNING UP
   .hero
     .page-content.clearfix
       .mammoth
@@ -14,20 +8,21 @@
         p.title.brandon
           | INVITE FRIENDS &amp;
           br
-          |Earn Product
+          |Earn Immortality
         p.subtitle.brandon
           | Share your unique link via email, Facebook
           br
-          | or Twitter and earn Harry's goods for<br>each friend who signs up.
+          | or Twitter and earn goods for<br>each friend who signs up.
         .copy-link.brandon
           = root_url(ref: @user.token)
-          - twitter_message = "Shaving is evolving. Excited for harrys to launch"
+        .copied-msg.brandon
+          | Copied to clipboard!
+        - twitter_message = 'Sweet, on my way to some free math sessions at #TallGuyTutoring'
         .social-links
-          .fb-share-button data-href="https://developers.facebook.com/docs/plugins/" data-layout="button"
-          a href="http://www.facebook.com/sharer/sharer.php?u=#{CGI::escape(root_url(ref: @user.token))}" class="fb" target="_blank"
+          .fb-share-button data-href="#{root_url(ref: @user.token)}" data-layout="button"
           .sep
-          a href="http://twitter.com/share?url=#{CGI::escape(root_url(ref: @user.token))}&text=#{CGI::escape(twitter_message)}" class="twit" target="_blank"
-  .prizes class="prize-#{@user.milestones.size}"
+          a.twitter-hashtag-button href='https://twitter.com/intent/tweet?button_hashtag=TallGuyTutoring&text=Sweet%2C%20on%20my%20way%20to%20some%20free%20math%20sessions%20at' data-url="#{root_url(ref: @user.token)}" data-dnt="true">Tweet #TallGuyTutoring
+  .prizes
     .page-content
       p.callout.brandon
         |Here's How It Works:
@@ -36,7 +31,7 @@
           p.friends
             | Friends Joined
           p.rewards
-            | Harry's Product
+            | Sweet Reward
         - @user.all_milestone.each do |info|
           li.product.brandon class="#{'selected' if info[:last_reached]}"
             .circle
@@ -46,4 +41,7 @@
               = info[:milestone].description
       .progress
         .mover
-          .bar.clearfix
+          - referals_cout = @user.referals_cout
+          .bar.clearfix style="width: #{referals_cout >= 20 ? 1120 : 1120 / 20 * referals_cout}px"
+  a.link-to-main-site href='http://tallguytutoring.com/'
+    img src="#{ asset_url("refer/link_logo.jpg")}"

@@ -1,8 +1,8 @@
 Milestone.create [
-    { referals_count: 5, description: 'Shave Cream' },
-    { referals_count: 10, description: 'Truman Handle' },
-    { referals_count: 25, description: 'Winston Shave Set' },
-    { referals_count: 50, description: 'One Year Free Blades' }
+    { referals_count: 5, description: 'Free group session' },
+    { referals_count: 10, description: 'Free one-on-one session' },
+    { referals_count: 15, description: 'Free session and help completing a full assignment' },
+    { referals_count: 20, description: 'Free complete test or exam prep, up to 3 hours one-on-one' }
 ]
 
 5.times { |i|
