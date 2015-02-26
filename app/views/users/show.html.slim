@@ -25,14 +25,15 @@
   .prizes
     .page-content
       p.callout.brandon
-        |Here's How It Works:
+        | Here's your progress so far:
       ul.products.clearfix
         li.title.brandon
           p.friends
             | Friends Joined
           p.rewards
             | Sweet Reward
-        - @user.all_milestone.each do |info|
+        - all_milestone = @user.all_milestone
+        - all_milestone.each do |info|
           li.product.brandon class="#{'selected' if info[:last_reached]}"
             .circle
               = info[:milestone].referals_count
@@ -41,7 +42,6 @@
               = info[:milestone].description
       .progress
         .mover
-          - referals_cout = @user.referals_cout
-          .bar.clearfix style="width: #{referals_cout >= 20 ? 1120 : 1120 / 20 * referals_cout}px"
+          .bar.clearfix style="width: #{width_brogress_bar(@user.referals_cout, all_milestone.last[:milestone].referals_count)}px"
   a.link-to-main-site href='http://tallguytutoring.com/'
     img src="#{ asset_url("refer/link_logo.jpg")}"

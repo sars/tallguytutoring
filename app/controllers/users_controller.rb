@@ -6,7 +6,7 @@ class UsersController < ApplicationController
       flash[:error] = 'Email was not confirmed.'
       return redirect_to action: :new
     end
-    flash[:success] = 'Welcome in your page.'
+    flash[:success] = 'Welcome, human!'
   end
 
   def new

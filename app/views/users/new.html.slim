@@ -5,12 +5,9 @@
         | WANT TO EARN
         br
         | FREE SESSIONS?
-      p.small.brandon
-        | We though you might.
     .form-wrap.clearfix
-      .key
       p.byline.brandon
-        | Be the first to know
+        | We thought you might
       = form_for @user do |form|
         = form.text_field :email, placeholder: 'Enter Email', class: 'email brandon'
         = form.hidden_field :ref, value: params[:ref] if params[:ref]
