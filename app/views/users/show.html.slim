@@ -33,15 +33,21 @@
           p.rewards
             | Sweet Reward
         - all_milestone = @user.all_milestone
+        - referals_cout = @user.referals_cout
         - all_milestone.each do |info|
           li.product.brandon class="#{'selected' if info[:last_reached]}"
             .circle
               = info[:milestone].referals_count
             .sep
-            p
+            p.milestone_description
               = info[:milestone].description
       .progress
         .mover
-          .bar.clearfix style="width: #{width_brogress_bar(@user.referals_cout, all_milestone.last[:milestone].referals_count)}px"
+          .bar.clearfix style="width: #{width_brogress_bar(referals_cout, all_milestone.last[:milestone].referals_count)}%"
+  .referals-counter.brandon
+    | You have
+    .circle
+      = referals_cout
+    | cool friends
   a.link-to-main-site href='http://tallguytutoring.com/'
-    img src="#{ asset_url("refer/link_logo.jpg")}"
+    img src="#{ asset_url('refer/link_logo.jpg')}"

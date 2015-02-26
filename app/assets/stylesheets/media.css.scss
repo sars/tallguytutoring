@@ -1,0 +1,57 @@
+@media screen and (max-width: 950px) {
+  #home {
+    .hero {
+      height: 525px;
+      background: url("home/shutterstock.png") no-repeat scroll center top;
+      background-size: contain;
+      min-width: 395px;
+      max-width: 570px;
+      .large {
+        margin: 430px auto 0px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1140px) {
+  #refer {
+    .prizes {
+      padding-bottom: none;
+      background: none repeat scroll 0% 0% #FFF;
+      margin: 0 auto;
+      .products {
+        .title {
+          margin-right: auto;
+          min-width: 150px;
+        }
+        .product {
+          margin-right: none;
+        }
+        .title, .product {
+          display: table-cell !important;
+          width: 20% !important;
+          float: none !important;
+          padding-top: 5px;
+        }
+      }
+    }
+    .hero {
+      min-height: 800px;
+    }
+    .mammoth {
+      float: none;
+      background-position: center top;
+      margin: 0px auto;
+    }
+    .share-wrap {
+      margin: 0px auto;
+      float: none;
+    }
+    .page-content {
+      min-width: 640px;
+      max-width: 1140px;
+      width: auto;
+    }
+  }
+}
