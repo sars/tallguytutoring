@@ -55,3 +55,31 @@
     }
   }
 }
+
+@media screen and (max-width: 640px) {
+  #refer {
+    .page-content {
+      max-width: 640px;
+    }
+    .page-content, .mammoth {
+      min-width: 320px;
+      width: auto;
+    }
+    .mammoth {
+      background-size: contain;
+    }
+    .share-wrap, .prizes {
+      margin: -45px auto;
+    }
+    .prizes {
+      .products {
+        .title {
+          display: none !important;
+        }
+        .product p {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
