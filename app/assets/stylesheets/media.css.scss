@@ -16,10 +16,14 @@
 
 @media screen and (max-width: 1140px) {
   #refer {
+    .hero {
+      min-height: 900px;
+    }
     .prizes {
       padding-bottom: none;
       background: none repeat scroll 0% 0% #FFF;
       margin: 0 auto;
+
       .products {
         .title {
           margin-right: auto;
@@ -36,9 +40,6 @@
         }
       }
     }
-    .hero {
-      min-height: 800px;
-    }
     .mammoth {
       float: none;
       background-position: center top;
@@ -47,6 +48,20 @@
     .share-wrap {
       margin: 0px auto;
       float: none;
+      width: auto;
+      .copy-link, .copied-msg {
+        width: 90%;
+      }
+      .copied-msg {
+        margin: 0 auto;
+      }
+      .why, .subtitle, .copy-link {
+        font-size: 25px;
+      }
+      .title {
+        font-size: 45px;
+        line-height: normal;
+      }
     }
     .page-content {
       min-width: 640px;
@@ -69,7 +84,18 @@
       background-size: contain;
     }
     .share-wrap, .prizes {
-      margin: -45px auto;
+      margin: -10px auto;
+    }
+    .share-wrap {
+      .why, .subtitle, .copy-link {
+        font-size: 15px;
+      }
+      .title {
+        font-size: 30px;
+      }
+    }
+    .hero {
+      min-height: 800px;
     }
     .prizes {
       .products {
@@ -77,9 +103,30 @@
           display: none !important;
         }
         .product p {
-          font-size: 12px;
+          font-size: 14px;
         }
       }
     }
+  }
+}
+
+@media screen and (max-width: 380px) {
+  #refer {
+    .page-content {
+      min-width: 320px;
+      .mammoth {
+        height: 300px !important;
+        background-position: center bottom;
+      }
+      .share-wrap {
+        .why, .subtitle, .copy-link {
+          font-size: 15px;
+        }
+        .title {
+          font-size: 30px;
+        }
+      }
+    }
+
   }
 }

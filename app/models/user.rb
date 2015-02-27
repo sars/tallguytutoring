@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   scope :confirmed_referals, -> { where('confirmed_at IS NOT NULL') }
 
   def ip_access
-    errors.add :ip_address, :invalid unless User.where(ip_address: ip_address).size <= 2
+    errors.add :ip_address, :invalid if User.where(ip_address: ip_address).size > 2
   end
 
   def referals_cout
