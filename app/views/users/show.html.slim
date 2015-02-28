@@ -12,16 +12,19 @@
         p.subtitle.brandon
           | Share your unique link via email, Facebook
           br
-          | or Twitter and earn goods for<br>each friend who signs up.
+          | or Twitter and earn goods for
+          br
+          | each friend who enters their email.
         .copy-link.brandon
           = root_url(ref: @user.token)
         .copied-msg.brandon
           | Copied to clipboard!
         - twitter_message = 'Sweet, on my way to some free math sessions at #TallGuyTutoring'
-        .social-links
-          .fb-share-button data-href="#{root_url(ref: @user.token)}" data-layout="button"
-          .sep
-          a.twitter-hashtag-button href='https://twitter.com/intent/tweet?button_hashtag=TallGuyTutoring&text=Sweet%2C%20on%20my%20way%20to%20some%20free%20math%20sessions%20at' data-url="#{root_url(ref: @user.token)}" data-dnt="true">Tweet #TallGuyTutoring
+        .social-links-wrapper
+          .social-links
+            .fb-share-button data-href="#{root_url(ref: @user.token)}" data-layout="button"
+            .sep
+            a.twitter-hashtag-button href='https://twitter.com/intent/tweet?button_hashtag=TallGuyTutoring&text=Sweet%2C%20on%20my%20way%20to%20some%20free%20math%20sessions%20at' data-url="#{root_url(ref: @user.token)}" data-dnt="true">Tweet #TallGuyTutoring
   .prizes
     .page-content
       p.callout.brandon
@@ -48,6 +51,6 @@
     | You have
     .circle
       = referals_cout
-    | cool friends
+    | cool friends so far
   a.link-to-main-site href='http://tallguytutoring.com/'
     img src="#{asset_url('refer/link_logo.jpg')}"
