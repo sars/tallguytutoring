@@ -1,14 +1,43 @@
-@media screen and (max-width: 950px) {
+@media screen and (max-device-width: 950px)  {
+  form {
+    margin-bottom: 0;
+    height: 120px;
+    display: block;
+    width: 100%;
+    border: 2px solid #074E6F;
+  }
   #home {
+    .form-wrap {
+      width: 700px;
+      margin-bottom: 10px;
+      height: 200px;
+      .email {
+        font-size: 40px;
+        padding: 0 0 0 20px;
+        width: 435px;
+        height: 120px;
+        line-height: 120px;
+      }
+      .byline {
+        font-size: 25px;
+      }
+      .submit {
+        font-size: 30px;
+        height: 120px;
+        width: 245px;
+      }
+    }
     .hero {
-      height: 525px;
+      margin: 150px auto 100px;
+      height: 650px;
       background: url("home/shutterstock.png") no-repeat scroll center top;
       background-size: contain;
       min-width: 395px;
       max-width: 570px;
       .large {
-        margin: 430px auto 0px;
+        margin: 480px auto 0px;
         text-align: center;
+        font-size: 55px;
       }
     }
   }
